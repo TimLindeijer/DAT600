@@ -14,6 +14,34 @@ def insertion_sort(arr):
         steps += 1
     return steps
 
+def merge(arr, left, right):
+    steps = 0
+    i = j = k = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            arr[k] = left[i]
+            i += 1
+        else:
+            arr[k] = right[j]
+            j += 1
+        k += 1
+        steps += 1
+
+    while i < len(left):
+        arr[k] = left[i]
+        i += 1
+        k += 1
+        steps += 1
+
+    while j < len(right):
+        arr[k] = right[j]
+        j += 1
+        k += 1
+        steps += 1
+
+    return steps
+
 def merge_sort(arr):
     steps = 0
     if len(arr) > 1:
@@ -24,29 +52,7 @@ def merge_sort(arr):
         steps += merge_sort(left)
         steps += merge_sort(right)
 
-        i = j = k = 0
-
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                arr[k] = left[i]
-                i += 1
-            else:
-                arr[k] = right[j]
-                j += 1
-            k += 1
-            steps += 1
-
-        while i < len(left):
-            arr[k] = left[i]
-            i += 1
-            k += 1
-            steps += 1
-
-        while j < len(right):
-            arr[k] = right[j]
-            j += 1
-            k += 1
-            steps += 1
+        steps += merge(arr, left, right)
 
     return steps
 
