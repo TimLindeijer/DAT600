@@ -1,3 +1,4 @@
+# O(n^3) matrix multiplication
 def strassen(A,B,n):
     C = [[]]
     for i in range(n):
@@ -7,6 +8,7 @@ def strassen(A,B,n):
                 C[i][j] += A[i][k]*B[k][j]
     return C
 
+# Theta(n^3) matrix multiplication
 def divideconquer(A,B,n):
     C = [[]]
     if n == 1:
