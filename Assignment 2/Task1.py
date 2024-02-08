@@ -2,7 +2,7 @@ from functools import cache
 
 # Function to calculate the minimum number of scalar multiplications
 # required to multiply a chain of matrices with given dimensions
-def calculate_min_scalar_multiplications(dimensions: list[int]) -> int:
+def calculate_min_scalar_multiplications_dynamic(dimensions: list[int]) -> int:
     @cache
     def calculate(i, j):
         # Base case: if there is only one matrix in the chain, return 0
@@ -17,7 +17,24 @@ def calculate_min_scalar_multiplications(dimensions: list[int]) -> int:
     # Call the recursive function with the start and end indices of the chain
     return calculate(0, len(dimensions) - 1)
 
+def calculate_min_scalar_multiplications_greedy(dimensions):
+    cost = 0
+    while len(dimensions) > 2:
+        # Find the pair of matrices to multiply that has the smallest cost
+        min_cost, min_index = min((dimensions[i-1]*dimensions[i]*dimensions[i+1], i) 
+                                  for i in range(1, len(dimensions)-1))
+        # Add the cost of this multiplication to the total cost
+        cost += min_cost
+        # Remove the middle dimension of the multiplied pair from the list
+        dimensions.pop(min_index)
+    return cost
+
 # Test the function with some sample inputs
-print(calculate_min_scalar_multiplications([10, 30, 5, 60]))  # Output: 4500
-print(calculate_min_scalar_multiplications([40, 20, 30, 10, 30]))  # Output: 26000
-print(calculate_min_scalar_multiplications([10, 20, 30, 40, 30]))  # Output: 30000
+# Dynamic Programming
+print(calculate_min_scalar_multiplications_dynamic([10, 30, 5, 60]))  # Output: 4500
+print(calculate_min_scalar_multiplications_dynamic([40, 20, 30, 10, 30]))  # Output: 26000
+print(calculate_min_scalar_multiplications_dynamic([10, 20, 30, 40, 30]))  # Output: 30000
+# Greedy
+print(calculate_min_scalar_multiplications_greedy([10, 30, 5, 60]))  # Output: 4500
+print(calculate_min_scalar_multiplications_greedy([40, 20, 30, 10, 30]))  # Output: 26000
+print(calculate_min_scalar_multiplications_greedy([10, 20, 30, 40, 30]))  # Output: 30000
