@@ -26,6 +26,7 @@ def DynamicCoins(coins, target):
     # Store the minimum number of coins needed to make each value
     @cache
     # Recursive function to find the minimum number of coins needed to make a value
+    # Takes advantage of the cache to avoid recalculating the same value multiple times
     def MinCoins(target):
         if target <= 0:
             return None
