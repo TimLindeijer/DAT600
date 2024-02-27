@@ -22,14 +22,17 @@ def GreedyCoins(coins, target):
             break
     print(f"Best coins: {picked_coins}")
 
+
 def DynamicCoins(coins, target):
     # Store the minimum number of coins needed to make each value
     @cache
     # Recursive function to find the minimum number of coins needed to make a value
     # Takes advantage of the cache to avoid recalculating the same value multiple times
     def MinCoins(target):
-        if target <= 0:
+        if target < 0:
             return None
+        if target == 0:
+            return []
         min_coins = None
         # Brute force, check all combinations for each coin
         for coin in coins:
@@ -41,9 +44,11 @@ def DynamicCoins(coins, target):
                     # Update min_coins if the combination is shorter
                     if min_coins is None or len(combination) < len(min_coins):
                         min_coins = combination
-        # Print out the best combination
-        print(f"Best coins: {min_coins}")
-    return MinCoins(target)
+        return min_coins
+
+    result = MinCoins(target)
+    print(f"Best coins: {result}")
+    return result
 
 if __name__ == "__main__":
     coinies = [1, 5, 11]
