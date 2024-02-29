@@ -75,8 +75,6 @@ def fractional_knapsack_problem(dict_items: dict, weight_limit: int) -> float:
             weight_limit -= weight
         else:
             most_valuable_load += value * (weight_limit / weight)
-            weight_limit = 0
-        if weight_limit == 0:
             break
 
     return most_valuable_load
