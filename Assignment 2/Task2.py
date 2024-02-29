@@ -94,19 +94,19 @@ def generate_knapsack_problem(num_items, max_weight, max_value, max_capacity):
 # Test 1
 items1, capacity1 = generate_knapsack_problem(10, 100, 100, 1000)
 print(f"Items: {items1}\nCapacity: {capacity1}")
-print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items1, capacity1)}")
-print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items1, capacity1)}")
+print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items1, capacity1)} is the most valuable load.")
+print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items1, capacity1)} is the most valuable load.")
 
 # Test 2
 items2, capacity2 = generate_knapsack_problem(10, 100, 100, 1000)
 print(f"Items: {items2}\nCapacity: {capacity2}")
-print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items2, capacity2)}")
-print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items2, capacity2)}")
+print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items2, capacity2)} is the most valuable load.")
+print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items2, capacity2)} is the most valuable load.")
 
 # Test3
 items3, capacity3 = generate_knapsack_problem(10, 100, 100, 1000)
 print(f"Items: {items3}\nCapacity: {capacity3}")
-print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items3, capacity3)}")
-print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items3, capacity3)}")
+print(f"0-1 Knapsack Problem: {zero_one_knapsack_problem(items3, capacity3)} is the most valuable load.")
+print(f"Fractional Knapsack Problem: {fractional_knapsack_problem(items3, capacity3)} is the most valuable load(3).")
 
 
