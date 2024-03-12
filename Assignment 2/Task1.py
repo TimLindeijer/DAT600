@@ -2,6 +2,7 @@ from functools import cache
 
 # Function to calculate the minimum number of scalar multiplications
 # required to multiply a chain of matrices with given dimensions
+# Based on implementation on wikipedia (https://en.wikipedia.org/wiki/Matrix_chain_multiplication#A_dynamic_programming_algorithm)
 def calculate_min_scalar_multiplications_dynamic(dimensions: list[int]) -> int:
     @cache
     def calculate(i, j):
